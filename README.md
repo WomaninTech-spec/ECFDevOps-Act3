@@ -1,5 +1,6 @@
 # ECFDevOps-Act3
-Activité 3 de l'ECF finale pour bachelor DevOps
+Act 3 de for the final ECF : bachelor DevOps
+
 Table of content
 Introduction to setting up a CI/CD pipeline on AWS:
 
