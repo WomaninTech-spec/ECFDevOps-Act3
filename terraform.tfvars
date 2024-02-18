@@ -1,0 +1,21 @@
+subnet_id = "subnet-013ae0da76780f0fb"
+emr_managed_master_security_group = "sg-0c1826237189e6a3a"
+emr_managed_slave_security_group  = "sg-01cd165d9128d6852"
+key_name = "spark-cluster"
+service_role = "EMR_DefaultRole"
+autoscaling_role = "EMR_AutoScaling_DefaultRole"
+instance_profile = "EMR_EC2_DefaultRole"
+cluster_name = "spark-cluster"
+release_label = "emr-7.0.0"
+applications = ["Spark"]
+core_instance_count = 2
+core_instance_type = "m5.xlarge" 
+master_instance_type = "m5.xlarge"
+master_instance_count = 1
+cluster_identifier = "docdb-cluster"
+master_username = "barbara"
+master_password = "Devops2024!"
+engine_version = "5.0.0"
+instance_count = "3"
+instance_class = "db.t3.medium"
+
