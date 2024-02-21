@@ -55,8 +55,8 @@ Je peux utiliser Cloud9 pour suivre et gérer mes ressources AWS ainsi que mes c
 En suivant ces étapes, je pourrai mettre en place efficacement le monitoring des Spark Jobs et de MongoDB dans mon environnement AWS, tout en utilisant Cloud9 pour suivre le processus de déploiement.
 
 ---
-
-## Pour configurer le monitoring sur AWS via CloudWatch, je dois effectuer quelques étapes supplémentaires pour activer la collecte de métriques pour les ressources que je souhaite surveiller :
+## Monitoring AWS <a name="Monitoring AWS"></a>
+Pour configurer le monitoring sur AWS via CloudWatch, je dois effectuer quelques étapes supplémentaires pour activer la collecte de métriques pour les ressources que je souhaite surveiller :
 
 ## Pour mes instances EC2 :
 
