@@ -145,3 +145,60 @@ resource "aws_docdb_cluster_instance" "docdb_instances" {
   instance_class     = var.instance_class
   engine             = "docdb"
 }
+
+#Monitoring EC2 instances
+resource "aws_cloudwatch_metric_alarm" "ec2_instance_alarm" {
+  alarm_name          = "EC2InstanceStatusAlarm"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "StatusCheckFailed_Instance"
+  namespace           = "AWS/EC2"
+  period              = "300"
+  statistic           = "Average"
+  threshold           = "1"
+  
+  dimensions {
+    InstanceId = aws_instance.my-first-server.id
+  }
+
+  alarm_description = "This alarm is triggered if the EC2 instance status check fails"
+  alarm_actions     = ["arn:aws:sns:eu-central-1:040336645459:monitoring"]
+}
+
+#Monitoring EMR clusters
+resource "aws_cloudwatch_metric_alarm" "emr_cluster_alarm" {
+  alarm_name          = "EMRClusterFailureAlarm"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "FailedNodes"
+  namespace           = "AWS/ElasticMapReduce"
+  period              = "300"
+  statistic           = "Average"
+  threshold           = "1"
+  
+  dimensions {
+    JobFlowId = aws_emr_cluster.spark_cluster.id
+  }
+
+  alarm_description = "This alarm is triggered if there are failed nodes in the EMR cluster"
+  alarm_actions     = ["arn:aws:sns:eu-central-1:040336645459:monitoring"]
+}
+
+#Monitoring DocuementDB cluster
+resource "aws_cloudwatch_metric_alarm" "docdb_cpu_alarm" {
+  alarm_name          = "DocDBCPUUtilizationAlarm"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/DocDB"
+  period              = "300"
+  statistic           = "Average"
+  threshold           = "80"  # Adjust threshold as needed
+  
+  dimensions {
+    DBClusterIdentifier = aws_docdb_cluster.docdb.id
+  }
+
+  alarm_description = "This alarm is triggered if the CPU utilization of the DocumentDB cluster exceeds 80%"
+  alarm_actions     = ["arn:aws:sns:eu-central-1:040336645459:monitoring"]
+}
