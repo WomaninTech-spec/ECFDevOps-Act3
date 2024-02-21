@@ -18,4 +18,4 @@ master_password = "Devops2024!"
 engine_version = "5.0.0"
 instance_count = "3"
 instance_class = "db.t3.medium"
-
+allowed_ports           = [22]
